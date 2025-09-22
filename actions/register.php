@@ -27,7 +27,7 @@ if (isset($_POST['username']) && isset($_POST['password']) && isset($_POST['conf
 
       if ($stmt->execute()) {
         $_SESSION['username'] = $username;
-        header("Location: http://localhost:800/index.php?page=home");
+        header("Location: http://localhost:8000/index.php?page=home");
         exit();
       } else {
         echo "Register gagal. Coba lagi.";

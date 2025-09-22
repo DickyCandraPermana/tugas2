@@ -1,4 +1,9 @@
 <?php
+session_start();
+if (!isset($_SESSION['username'])) {
+  header("Location: http://localhost:8000/index.php?page=loginForm");
+  exit();
+}
 $services = $db->query("SELECT * FROM service")->fetchAll();
 $jadwals = $db->query("SELECT * FROM jadwal")->fetchAll();
 ?>
@@ -36,6 +41,11 @@ $jadwals = $db->query("SELECT * FROM jadwal")->fetchAll();
         <label for="jadwal_<?= $jadwal['id'] ?>"><?= htmlspecialchars($jadwal['mulai']) ?></label>
       </div>
     <?php endforeach; ?>
+  </fieldset>
+
+  <fieldset>
+    <legend>Catatan</legend>
+    <textarea name="catatan" id="catatan" cols="30" rows="4"></textarea>
   </fieldset>
 
   <button type="submit">Submit</button>
